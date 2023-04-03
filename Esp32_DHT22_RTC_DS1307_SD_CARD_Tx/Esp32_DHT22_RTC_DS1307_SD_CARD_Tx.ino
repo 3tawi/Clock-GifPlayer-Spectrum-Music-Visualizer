@@ -4,11 +4,14 @@
 // - Lien vidéo Digital Clock: https://youtu.be/jEFxm5st4zk
 // - Lien vidéo Gerber File & Schema: https://youtu.be/HIsI88rf6HY
 //   REQUIRES the following Arduino libraries:
+// - DS1307ESP Library: https://github.com/3tawi/DS1307ESPTime
+// - DHT Sensor Library: https://github.com/3tawi/esp32DHT
 // - SmartMatrix Library: https://github.com/pixelmatix/SmartMatrix
 // - FastLED Library: https://github.com/pixelmatix/FastLED
 // - FFT Library: http://www.robinscheibler.org/2017/12/12/esp32-fft.html
 // Getting Started ESP32 Px Matrix With SmartMatrix:  https://youtu.be/InhCc_-RBb4
 */
+
 #include <WiFi.h>
 #include <WebServer.h>
 #include <SD.h>
