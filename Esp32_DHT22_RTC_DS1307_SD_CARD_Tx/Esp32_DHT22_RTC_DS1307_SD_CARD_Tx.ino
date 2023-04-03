@@ -1,6 +1,7 @@
 /*
 // - Lien vidéo Spectrum Music Visualizer GifPlayer : https://youtu.be/vyOCESl5TAg
-// - Lien vidéo Clock: https://youtu.be/jEFxm5st4zk
+// - Lien vidéo Analog Clock: https://youtu.be/HkZFb_hBX5c
+// - Lien vidéo Digital Clock: https://youtu.be/jEFxm5st4zk
 // - Lien vidéo Gerber File & Schema: https://youtu.be/HIsI88rf6HY
 //   REQUIRES the following Arduino libraries:
 // - SmartMatrix Library: https://github.com/pixelmatix/SmartMatrix
@@ -35,6 +36,7 @@ IPAddress subnet(255, 255, 255, 0);
 #define endHeader 0x36
 
 
+String gifDirac = "/acgifs";
 String gifDir = "/gifs";
 String gifDirs = "/gifss"; // play all GIFs in this directory on the SD card
 char filePath[256] = { 0 };
