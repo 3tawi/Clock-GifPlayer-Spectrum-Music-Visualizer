@@ -214,14 +214,18 @@ void setPatternModeCl() {
   audioP.stop();
   patterns.setPattern(Ci);
 }
+void setPalette() {
+  usPalette[0] = rgb16(0);
+  
+  mySeriel->write(UpHeader);
+  mySeriel->write((uint8_t *)usPalette, 255);
+}
 void setPatternModeAu() {
   start_tick = true;
   root.close();
   patterns.setPattern(0);
   audioP.start();
-  usPalette[0] = rgb16(0);
-  mySeriel->write(UpHeader);
-  mySeriel->write((uint8_t *)usPalette, 2);
+  setPalette();
 }
 void handleModeAuCl() {
   handleRoot();
