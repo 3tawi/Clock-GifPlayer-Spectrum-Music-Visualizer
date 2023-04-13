@@ -280,8 +280,7 @@ void setFont(uint8_t* font_c)
 }
 
 void getAPWifi() {
-  WiFi.softAPdisconnect(true);
-  WiFi.softAPConfig(ip, gateway, subnet);
+  WiFi.softAPConfig(ip, gatewayap, subnet);
   WiFi.softAP(Apssid, Appassword);
   textip = "Local Wifi : ";
   textip += Apssid;
