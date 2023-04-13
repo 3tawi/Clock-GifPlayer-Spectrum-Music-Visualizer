@@ -72,6 +72,8 @@ void setDriver(Stream* s) {
   mySeriel = s;
 }
 void getWifi() {
+  if(wifiapok) 
+    WiFi.softAPdisconnect(true);
   char user[30], pasw[30];
   int lengthSsid = Ssid.length() + 1;
   int lengthPass = Pass.length() + 1;
@@ -94,6 +96,7 @@ void getWifi() {
     } else { 
     wifiok = false;
     } 
+  wifiapok = false;
 }
 
 void setup() {
@@ -103,6 +106,7 @@ void setup() {
   SPIFFS.begin();
   SD.begin(5);
   effects.readSttWifi();
+  WiFi.mode(WIFI_AP_STA);
   getWifi();
   if (!wifiok) { effects.getAPWifi(); }
   gif.begin(LITTLE_ENDIAN_PIXELS);
@@ -216,7 +220,9 @@ void setPatternModeCl() {
 }
 void setPalette() {
   usPalette[0] = rgb16(0);
-  
+  if (Ci != 2)
+    for (int k=1; k<255; k++)
+      usPalette[k] = ColorFromPalette(RainbowColors_p, k, 255, NOBLEND);
   mySeriel->write(UpHeader);
   mySeriel->write((uint8_t *)usPalette, 255);
 }
@@ -288,7 +294,8 @@ void handleWifi() {
   Ssid = server.arg("usname");
   Pass = server.arg("pssw");
   getWifi();
-  (!wifiok) ? effects.getAPWifi() : effects.Savewifi();
+  if (!wifiok) effects.getAPWifi();
+  else effects.Savewifi();
 }
 void handledata() {
   String content = "<?xml version = \"1.0\" ?>";
