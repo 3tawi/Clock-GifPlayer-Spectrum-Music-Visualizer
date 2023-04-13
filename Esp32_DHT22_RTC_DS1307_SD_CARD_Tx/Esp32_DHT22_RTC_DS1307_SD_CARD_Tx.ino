@@ -219,12 +219,19 @@ void setPatternModeCl() {
   patterns.setPattern(Ci);
 }
 void setPalette() {
-  usPalette[0] = rgb16(0);
-  if (Ci != 2)
-    for (int k=1; k<255; k++)
-      usPalette[k] = ColorFromPalette(RainbowColors_p, k, 255, NOBLEND);
-  mySeriel->write(UpHeader);
-  mySeriel->write((uint8_t *)usPalette, 255);
+  usPalette[0] = (rgb16)rgb24{0, 0, 0};
+  if (Ci != 3) {
+    MesgPalette = RainbowColors_p;
+    for (int i=1; i<255; i++) {
+      CRGB colo = ColorFromPalette(MesgPalette, i, 255, NOBLEND);
+      usPalette[i] = (rgb16)rgb24{colo.r, colo.g, colo.b};
+    }
+    mySeriel->write(UpHeader);
+    mySeriel->write((uint8_t *)usPalette, 510);
+  } else {
+    mySeriel->write(UpHeader);
+    mySeriel->write((uint8_t *)usPalette, 2);
+  }
 }
 void setPatternModeAu() {
   start_tick = true;
