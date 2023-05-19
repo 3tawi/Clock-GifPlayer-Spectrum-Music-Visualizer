@@ -8,6 +8,7 @@
 // - DHT Sensor Library: https://github.com/3tawi/esp32DHT
 // - SmartMatrix Library: https://github.com/pixelmatix/SmartMatrix
 // - FastLED Library: https://github.com/pixelmatix/FastLED
+// - AnimatedGIF Library:  https://github.com/bitbank2/AnimatedGIF
 // - FFT Library: http://www.robinscheibler.org/2017/12/12/esp32-fft.html
 // Getting Started ESP32 Px Matrix With SmartMatrix:  https://youtu.be/InhCc_-RBb4
 */
